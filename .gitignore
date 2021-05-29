@@ -1,0 +1,4 @@
+*.swp
+*.db
+__pycache__/
+commands.txt
