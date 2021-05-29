@@ -1,0 +1,92 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>Event Manager</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800&display=swap&subset=cyrillic" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      {% if title %}
+      <title>Event Manager - {{ title }}</title>
+      {% else %}
+      <title>Welcome to Event Manager</title>
+      {% endif %}
+      <style>
+        table, td, th {
+          border: 1px solid black;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+      </style>
+    </head>
+    <body>
+       <body style="background-color: silver;">
+      <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" style="background-color: yellow;">
+      </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <span class="navbar-text">
+        <h1 style="margin-left: 15rem; font-family: 'Oswald', cursive;">◉ Event Manager ◉</h1>
+      </span>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+      </div>
+    </div>
+  </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
+      <body class="page">
+      <div class="page__header page__header_grey">
+         <div>
+          <main class="page__content">
+           <div class="page__intro page__intro_grey">
+            <a href="{{ url_for('index') }}">Event list</a>
+		{% if current_user.is_anonymous %}
+		|
+		<a href="{{ url_for('login') }}">Login</a>
+		<a href="{{ url_for('register') }}">Register</a>
+		{% else %}
+		<a href="{{ url_for('addevent') }}">Add Event</a> |
+		<a href="{{ url_for('logout') }}">Logout</a> ({{ current_user.username }})
+		{% endif %}
+	</div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+          </section>
+       </div>
+      </main>
+       <footer class="footer">
+    <div class="footer__content">
+      <p>&copy; Copyright SF + ST 2021, All rights reserved</p>
+      <div class="footer__social-links">
+        <a class="footer__link" href="">
+          <img src="images/Twitter_Rounded_Solid.png" alt="Лого">
+        </a>
+        <a class="footer__link" href="">
+          <img src="images/LinkedIn_Rounded_Solid.png" alt="Лого">
+        </a>
+        <a class="footer__link" href="">
+          <img src="images/Google_Rounded_Solid.png" alt="Лого">
+        </a>
+        <a class="footer__link" href="">
+          <img src="images/Facebook_Rounded_Solid.png" alt="Лого">
+        </a>
+      </div>
+    </div>
+   </footer>
+  </body>
+  </html>

@@ -1,0 +1,6 @@
+{
+  "name": "Flask Event Manager App",
+  "description": "E-9.11",
+  "image": "heroku/python",
+  "keywords": ["python", "flask", "sqlalchemy"]
+}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table>
+	    <tr>
+		    <th>owener</th>
+		    <th>title</th>
+		    <th>start</th>
+		    <th>end</th>
+	    </tr>
+	    {% for event in events %}
+	    <tr>
+	    	    <td>{{ event.user.username }}</td>
+		    <td><a href="{{ url_for('event', event_id=event.id) }}">{{ event.title }}</a>
+		    {% if current_user.username == event.user.username %}
+		    <a href="{{ url_for('delevent', event_id=event.id) }}" style="font-size: x-small; color: red;">&#10060;<a>
+		    {% endif %}
+		    </td>
+		    <td>{{ event.start_dt }}</td>
+		    <td>{{ event.end_dt }}</td>
+	    </tr>
+	    {% endfor %}
+    </table>
+{% endblock %}
