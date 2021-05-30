@@ -3,7 +3,7 @@
 
 ## Адрес в Heroku:
 
-https://event-manager.herokuapp.com/
+https://...................herokuapp.com/
 
 ### Характеристики:
 
